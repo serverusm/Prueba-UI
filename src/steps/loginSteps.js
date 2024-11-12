@@ -1,14 +1,14 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
-const LoginPage = require('../pages/LoginPage');
+const LoginPage = require('../pages/LoginPages');
 
 Given('the user is on the login screen', async () => {
     // Actions
 });
 
-When('the user enters valid credentials', async () => {
-    await LoginPage.login('testUser', 'password123');
+When('the user logs in with username {string} and password {string}', async (username, password) => {
+    await LoginPage.login(username, password);
 });
 
-Then('the user should see the home screen', async () => {
-    // Aserciones para verificar el login
+Then('an error message should be displayed', async () => {
+    expect(await LoginPage.isErrorMessageDisplayed()).toBe(true);
 });

@@ -1,16 +1,6 @@
+const projectPath = require('path')
+const androidAppPath = projectPath.join(process.cwd(), "app/android/LoginExample.apk")
 exports.config = {
-
-    services: ['appium'],
-    appium: {
-        command: 'appium',
-    },
-
-    capabilities: [{
-        platformName: 'Android',
-        deviceName: 'BlueStacks App Player', // emulator-5554
-        app: './path/to/MaterialLoginExample.apk',
-        automationName: 'UiAutomator2'
-    }],
     //
     // ====================
     // Runner Configuration
@@ -34,7 +24,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        // ToDo: define location for spec files here
+        './test/**/*.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -65,10 +55,10 @@ exports.config = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
-        browserName: 'Chrome',
-        'appium:deviceName': 'Android GoogleAPI Emulator',
-        'appium:platformVersion': '12.0',
-        'appium:automationName': 'UiAutomator2'
+        'appium:deviceName': 'Pixel 4 API 30 (R)',
+        'appium:platformVersion': '11.0',
+        'appium:automationName': 'UiAutomator2',
+        "appium:app": androidAppPath
     }],
 
     //
