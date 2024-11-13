@@ -1,7 +1,13 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const LoginPage = require('../pages/LoginPages');
 
-When('the user logs in with username {string} and password {string}', async (username, password) => {
+const pages = {login: LoginPage}
+
+Given('I am on the login page', async () => {
+    // await pages[page].open();
+});
+
+When(/^I login with e-mail (\w+) and password (.+)$/, async (username, password) => {
     await LoginPage.login(username, password);
 });
 

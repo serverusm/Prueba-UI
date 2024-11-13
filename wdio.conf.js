@@ -119,7 +119,7 @@ exports.config = {
     framework: 'cucumber',
     cucumberOpts: {
         require: ['./src/steps/*.js'],  // Ubicación de los archivos de steps
-        tagExpression: '',              // etiquetas para filtrar los escenarios
+        tagExpression: '@Login',              // etiquetas para filtrar los escenarios
         timeout: 30000,                 // Tiempo límite para cada step en ms
     },
     
@@ -141,7 +141,7 @@ exports.config = {
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: [''],
+        require: ['./features/step-definitions/steps.js'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -159,7 +159,7 @@ exports.config = {
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: '',
+        tagExpression: '@Login',
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
