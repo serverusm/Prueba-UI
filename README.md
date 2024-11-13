@@ -1,10 +1,10 @@
 Login and register user Automatitation
 
 ## Requeriments config
-* install appium
-* install Android Studio desktop
+* Install appium
+* Install Android Studio desktop
 
-install appium
+Install appium
 ```shell
 npm install -g appium
 ```
@@ -32,4 +32,6 @@ npx wdio run wdio.conf.js --cucumberOpts.tagExpression='@Login'
 npx wdio run wdio.conf.js --cucumberOpts.tagExpression='@Register
 ```
 
+Note:
+* No se puede realizar el CI porque se necesita android studio desktop
 
