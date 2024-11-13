@@ -33,5 +33,5 @@ npx wdio run wdio.conf.js --cucumberOpts.tagExpression='@Register
 ```
 
 Note:
-* No se puede realizar el CI porque se necesita android studio desktop
+* CI cannot be performed because Android Studio Desktop is required
 
