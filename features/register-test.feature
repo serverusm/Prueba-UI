@@ -1,6 +1,6 @@
 Feature: User Registration
 
-    @Register
+    @Register @Test
     Scenario: Successful registration of a new user
         Given the user is on the registration screen
         When I clicks on create one account

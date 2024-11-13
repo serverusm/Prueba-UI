@@ -119,7 +119,7 @@ exports.config = {
     framework: 'cucumber',
     cucumberOpts: {
         require: ['./features/steps-definitions/steps.js'],  // Ubicación de los archivos de steps
-        tagExpression: '@Register',             // etiquetas para filtrar los escenarios
+        tagExpression: '',             // etiquetas para filtrar los escenarios
         timeout: 30000,                 // Tiempo límite para cada step en ms
     },
     
