@@ -1,12 +1,33 @@
 class LoginPage {
-    get usernameField() { return $('selector') }
-    get passwordField() { return $('selector') }
-    get submitButton() { return $('selector') }
+    get usernameField() { return $('//android.widget.EditText[@resource-id="com.sourcey.materialloginexample:id/input_email"]'); }
+    get passwordField() { return $('//android.widget.EditText[@resource-id="com.sourcey.materialloginexample:id/input_password"]'); }
+    get loginButton() { return $('//android.widget.Button[@resource-id="com.sourcey.materialloginexample:id/btn_login"]'); }
+    get titlePage() { return $('//android.widget.TextView[@text="Hello world!"]'); }
+
+    async enterUsername(username) {
+        await this.usernameField.setValue(username);
+    }
+
+    async enterPassword(password) {
+        await this.passwordField.setValue(password);
+    }
+
+    async clickLoginButton() {
+        await this.loginButton.click();
+    }
 
     async login(username, password) {
-        await this.usernameField.setValue(username);
-        await this.passwordField.setValue(password);
-        await this.submitButton.click();
+        await this.enterUsername(username);
+        await this.enterPassword(password);
+        // await this.clickLoginButton();
+    }
+
+    async istitlePageDisplayed() {
+        return await this.titlePage.isDisplayed();
+    }
+
+    async getTitlePageText() {
+        return await this.titlePage.getText();
     }
 }
 

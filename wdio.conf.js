@@ -1,16 +1,6 @@
+const projectPath = require('path')
+const androidAppPath = projectPath.join(process.cwd(), "app/android/LoginExample.apk")
 exports.config = {
-
-    services: ['appium'],
-    appium: {
-        command: 'appium',
-    },
-
-    capabilities: [{
-        platformName: 'Android',
-        deviceName: 'BlueStacks App Player', // emulator-5554
-        app: './path/to/MaterialLoginExample.apk',
-        automationName: 'UiAutomator2'
-    }],
     //
     // ====================
     // Runner Configuration
@@ -34,7 +24,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        // ToDo: define location for spec files here
+        './features/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -65,10 +55,10 @@ exports.config = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
-        browserName: 'Chrome',
-        'appium:deviceName': 'Android GoogleAPI Emulator',
-        'appium:platformVersion': '12.0',
-        'appium:automationName': 'UiAutomator2'
+        'appium:deviceName': 'Pixel 4 API 30 (R)',
+        'appium:platformVersion': '11.0',
+        'appium:automationName': 'UiAutomator2',
+        "appium:app": androidAppPath
     }],
 
     //
@@ -127,6 +117,11 @@ exports.config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'cucumber',
+    cucumberOpts: {
+        require: ['./features/steps-definitions/steps.js'],  // Ubicación de los archivos de steps
+        tagExpression: '@Login',              // etiquetas para filtrar los escenarios
+        timeout: 30000,                 // Tiempo límite para cada step en ms
+    },
     
     //
     // The number of times to retry the entire specfile when it fails as a whole
@@ -141,35 +136,35 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['allure', {outputDir: 'allure-results'}],'json','video','cucumberjs-json'],
+    reporters: ['cucumberjs-json'],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
-    cucumberOpts: {
-        // <string[]> (file/dir) require files before executing features
-        require: [''],
-        // <boolean> show full backtrace for errors
-        backtrace: false,
-        // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
-        requireModule: [],
-        // <boolean> invoke formatters without executing steps
-        dryRun: false,
-        // <boolean> abort the run on first failure
-        failFast: false,
-        // <string[]> Only execute the scenarios with name matching the expression (repeatable).
-        name: [],
-        // <boolean> hide step definition snippets for pending steps
-        snippets: true,
-        // <boolean> hide source uris
-        source: true,
-        // <boolean> fail if there are any undefined or pending steps
-        strict: false,
-        // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: '',
-        // <number> timeout for step definitions
-        timeout: 60000,
-        // <boolean> Enable this config to treat undefined definitions as warnings.
-        ignoreUndefinedDefinitions: false
-    },
+    // cucumberOpts: {
+    //     // <string[]> (file/dir) require files before executing features
+    //     require: ['./features/step-definitions/steps.js'],
+    //     // <boolean> show full backtrace for errors
+    //     backtrace: false,
+    //     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+    //     requireModule: [],
+    //     // <boolean> invoke formatters without executing steps
+    //     dryRun: false,
+    //     // <boolean> abort the run on first failure
+    //     failFast: false,
+    //     // <string[]> Only execute the scenarios with name matching the expression (repeatable).
+    //     name: [],
+    //     // <boolean> hide step definition snippets for pending steps
+    //     snippets: true,
+    //     // <boolean> hide source uris
+    //     source: true,
+    //     // <boolean> fail if there are any undefined or pending steps
+    //     strict: false,
+    //     // <string> (expression) only execute the features or scenarios with tags matching the expression
+    //     tagExpression: '@Login',
+    //     // <number> timeout for step definitions
+    //     timeout: 60000,
+    //     // <boolean> Enable this config to treat undefined definitions as warnings.
+    //     ignoreUndefinedDefinitions: false
+    // },
 
 
     //
