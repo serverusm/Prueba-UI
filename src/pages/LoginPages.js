@@ -1,8 +1,8 @@
 class LoginPage {
-    get usernameField() { return $('selector_del_campo_username'); }
-    get passwordField() { return $('selector_del_campo_password'); }
-    get loginButton() { return $('selector_del_boton_login'); }
-    get errorMessage() { return $('selector_del_mensaje_error'); }
+    get usernameField() { return $('//android.widget.EditText[@resource-id="com.sourcey.materialloginexample:id/input_email"]'); }
+    get passwordField() { return $('//android.widget.EditText[@resource-id="com.sourcey.materialloginexample:id/input_password"]'); }
+    get loginButton() { return $('//android.widget.Button[@resource-id="com.sourcey.materialloginexample:id/btn_login"]'); }
+    get titlePage() { return $('//android.widget.TextView[@text="Hello world!"]'); }
 
     async enterUsername(username) {
         await this.usernameField.setValue(username);
@@ -19,15 +19,15 @@ class LoginPage {
     async login(username, password) {
         await this.enterUsername(username);
         await this.enterPassword(password);
-        await this.clickLoginButton();
+        // await this.clickLoginButton();
     }
 
-    async isErrorMessageDisplayed() {
-        return await this.errorMessage.isDisplayed();
+    async istitlePageDisplayed() {
+        return await this.titlePage.isDisplayed();
     }
 
-    async getErrorMessageText() {
-        return await this.errorMessage.getText();
+    async getTitlePageText() {
+        return await this.titlePage.getText();
     }
 }
 

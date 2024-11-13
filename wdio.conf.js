@@ -24,7 +24,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/**/*.js'
+        './features/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -117,6 +117,11 @@ exports.config = {
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
     framework: 'cucumber',
+    cucumberOpts: {
+        require: ['./src/steps/*.js'],  // Ubicación de los archivos de steps
+        tagExpression: '',              // etiquetas para filtrar los escenarios
+        timeout: 30000,                 // Tiempo límite para cada step en ms
+    },
     
     //
     // The number of times to retry the entire specfile when it fails as a whole
@@ -131,7 +136,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['allure', {outputDir: 'allure-results'}],'json','video','cucumberjs-json'],
+    reporters: ['cucumberjs-json'],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
